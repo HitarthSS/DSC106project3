@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>California Temperature Map</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module" src="map.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>How could California’s temperatures change by 2100?</h1>
+      <p>Compare annual temperatures across California under low and high emissions.</p>
+    </header>
+
+    <div class="controls">
+      <label for="scenario">Emissions scenario</label>
+      <select id="scenario">
+        <option value="ssp126">Low emissions · SSP1-2.6</option>
+        <option value="ssp585">High emissions · SSP5-8.5</option>
+      </select>
+    </div>
+
+    <div id="map-panel">
+      <svg id="map" viewBox="0 0 640 530" role="img" aria-labelledby="map-title">
+        <title id="map-title">California annual average temperature</title>
+      </svg>
+      <div id="tooltip" role="tooltip" hidden></div>
+    </div>
+    <p class="detail">Hover or tap a grid cell for coordinates and temperature.</p>
+    <svg id="legend" viewBox="0 0 340 48" role="img" aria-label="Temperature scale in degrees Celsius"></svg>
+
+    <section class="timeline" aria-label="Year selection">
+      <div class="year-heading">
+        <label for="year">Year <span id="period"></span></label>
+        <output id="year-value" for="year">2025</output>
+      </div>
+      <input id="year" type="range" min="1850" max="2100" step="1" value="2025">
+      <div class="endpoints"><span>1850</span><span>2100</span></div>
+    </section>
+    <footer>CMIP6 · GFDL-ESM4 · Annual mean temperature (°C)</footer>
+  </main>
+</body>
+</html>
